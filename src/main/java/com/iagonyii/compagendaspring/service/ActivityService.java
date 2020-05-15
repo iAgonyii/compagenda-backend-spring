@@ -26,6 +26,6 @@ public class ActivityService {
     }
 
     public void deleteActivity(Activity activity) {
-        repository.delete(activity);
+        repository.deleteById(activity.getId());
     }
 }

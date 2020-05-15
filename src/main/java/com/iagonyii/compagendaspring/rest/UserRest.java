@@ -31,6 +31,11 @@ public class UserRest {
         return service.getUsers();
     }
 
+    @GetMapping("/getId/{username}")
+    public Long getUsers(@PathVariable("username") String username) {
+        return service.getIdForName(username);
+    }
+
 //    @POST
 //    @Consumes(MediaType.APPLICATION_JSON)
 //    public void addUser(User user) {

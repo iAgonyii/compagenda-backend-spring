@@ -16,7 +16,6 @@ public class TeamRest {
     @Autowired
     private TeamService service;
 
-    // @TokenNeeded
     @PostMapping(consumes = "application/x-www-form-urlencoded")
     public Team createTeam(@RequestParam("name") String name, @RequestParam("user") long userId) {
 //        if(service.createTeam(name, userId)) {
