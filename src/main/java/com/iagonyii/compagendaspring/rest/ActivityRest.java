@@ -30,8 +30,8 @@ public class ActivityRest {
         return service.editActivity(activity);
     }
 
-    @DeleteMapping
-    public void deleteActivity(Activity activity) {
+    @PostMapping("/delete")
+    public void deleteActivity(@RequestBody Activity activity) {
         service.deleteActivity(activity);
     }
 }
