@@ -26,6 +26,8 @@ public class UserService {
         return repository.save(user);
     }
 
+    public void deleteUser(long id) { repository.deleteById(id); }
+
     public long getIdForName(String username) {
         return repository.getIdForName(username);
     }

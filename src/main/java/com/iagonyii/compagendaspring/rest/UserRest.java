@@ -32,7 +32,7 @@ public class UserRest {
     }
 
     @GetMapping("/getId/{username}")
-    public Long getUsers(@PathVariable("username") String username) {
+    public Long getUserId(@PathVariable("username") String username) {
         return service.getIdForName(username);
     }
 
