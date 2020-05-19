@@ -47,6 +47,8 @@ public class TeamService {
         repository.deleteById(id);
     }
 
+    public Team getTeamOfUser(long id) { return repository.findByTeamMembers_Id(id); }
+
     public List<Team> getTeams() {
         return repository.findAll();
     }

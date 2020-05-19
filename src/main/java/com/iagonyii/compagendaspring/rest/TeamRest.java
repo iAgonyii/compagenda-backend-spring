@@ -1,13 +1,13 @@
 package com.iagonyii.compagendaspring.rest;
 
+import com.iagonyii.compagendaspring.domain.Activity;
 import com.iagonyii.compagendaspring.domain.Team;
 import com.iagonyii.compagendaspring.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/team")
@@ -25,5 +25,15 @@ public class TeamRest {
 //            return Response.status(409).build();
 //        }
         return service.createTeam(name, userId);
+    }
+
+    @GetMapping
+    public Team getTeamOfUser(@RequestParam("userId") long id) {
+        return service.getTeamOfUser(id);
+    }
+
+    @PostMapping("/delete")
+    public void deleteTeam(@RequestBody long id) {
+        service.deleteTeam(id);
     }
 }
