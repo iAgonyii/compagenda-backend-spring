@@ -26,7 +26,7 @@ public class TeamService {
     @Autowired
     private TeamRepository repository;
 
-    public Team createTeam(String name, long userId) {
+    public boolean createTeam(String name, long userId) {
         if(!repository.existsByName(name)) {
 
             List<User> members = new ArrayList();
@@ -35,11 +35,11 @@ public class TeamService {
             members.add(owner);
             Team team = new Team(name);
             team.setTeamMembers(members);
-
-            return repository.save(team);
+            repository.save(team);
+            return true;
         }
         else {
-            throw new EntityExistsException();
+            return false;
         }
     }
 

@@ -1,13 +1,11 @@
 package com.iagonyii.compagendaspring.rest;
 
-import com.iagonyii.compagendaspring.domain.Activity;
 import com.iagonyii.compagendaspring.domain.Team;
 import com.iagonyii.compagendaspring.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/team")
@@ -17,14 +15,13 @@ public class TeamRest {
     private TeamService service;
 
     @PostMapping(consumes = "application/x-www-form-urlencoded")
-    public Team createTeam(@RequestParam("name") String name, @RequestParam("user") long userId) {
-//        if(service.createTeam(name, userId)) {
-//            return Response.status(201).build();
-//        }
-//        else {
-//            return Response.status(409).build();
-//        }
-        return service.createTeam(name, userId);
+    public ResponseEntity createTeam(@RequestParam("name") String name, @RequestParam("user") long userId) {
+        if(service.createTeam(name, userId)) {
+            return new ResponseEntity(HttpStatus.CREATED);
+        }
+        else {
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
     }
 
     @GetMapping

@@ -20,12 +20,6 @@ public class AuthRest {
     @PostMapping(path = "/register", consumes = "application/x-www-form-urlencoded")
     public ResponseEntity register(@RequestParam("username") String username, @RequestParam("email") String email, @RequestParam("password") String password) {
         User user = new User(username, email, password);
-//        if(service.register(user)) {
-//            return Response.status(201).build();
-//        }
-//        else {
-//            return Response.status(409).build();
-//        }
         if(service.register(user)) {
             return new ResponseEntity(HttpStatus.CREATED);
         }
