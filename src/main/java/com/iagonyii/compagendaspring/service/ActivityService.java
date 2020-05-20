@@ -21,6 +21,10 @@ public class ActivityService {
         return repository.getByUserId(id);
     }
 
+    public List<Activity> getTeamActivities(long id) {
+        return repository.findAllByTeamId(id);
+    }
+
     public Activity editActivity(Activity activity) {
         return repository.save(activity);
     }

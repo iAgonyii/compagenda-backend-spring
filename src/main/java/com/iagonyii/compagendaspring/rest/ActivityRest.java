@@ -25,6 +25,11 @@ public class ActivityRest {
         return service.getActivities(id);
     }
 
+    @GetMapping("/teams")
+    public List<Activity> getTeamActivities(@RequestParam("teamId") long id) {
+        return service.getTeamActivities(id);
+    }
+
     @PostMapping("/{id}")
     public Activity editActivity(@PathVariable long id, Activity activity) {
         return service.editActivity(activity);

@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
-    @Query("from Activity a where a.userId = :uid")
+    @Query("from Activity a where a.userId = :uid and a.teamId is null")
     List<Activity> getByUserId (@Param("uid") long userId);
+
+    List<Activity> findAllByTeamId (long teamId);
 }
