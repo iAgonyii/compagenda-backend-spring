@@ -1,11 +1,14 @@
 package com.iagonyii.compagendaspring.rest;
 
+import com.iagonyii.compagendaspring.domain.Invite;
 import com.iagonyii.compagendaspring.domain.Team;
 import com.iagonyii.compagendaspring.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/team")
@@ -33,6 +36,9 @@ public class TeamRest {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/invite")
+    public List<Invite> getTeamInvites(@RequestParam("userId") long id) { return service.getTeamInvites(id); }
 
     @GetMapping
     public Team getTeamOfUser(@RequestParam("userId") long id) {

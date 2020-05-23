@@ -56,6 +56,10 @@ public class TeamService {
         }
     }
 
+    public List<Invite> getTeamInvites(long userId) {
+        return inviteRepository.findAllByUserId(userId);
+    }
+
     public void deleteTeam(long id) {
         repository.deleteById(id);
     }

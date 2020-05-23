@@ -14,7 +14,8 @@ public class Invite {
     private InviteStatusEnum status;
 
     public Invite(long teamId, long userId) {
-
+        this.teamId = teamId;
+        this.userId = userId;
     }
 
     public Invite() {
