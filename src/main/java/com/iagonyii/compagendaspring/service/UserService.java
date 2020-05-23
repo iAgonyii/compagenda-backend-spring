@@ -32,5 +32,5 @@ public class UserService {
         return repository.getIdForName(username);
     }
 
-
+    public User findByName(String username) { return repository.findByUsername(username); }
 }

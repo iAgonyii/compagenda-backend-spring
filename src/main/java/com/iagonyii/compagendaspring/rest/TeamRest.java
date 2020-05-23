@@ -24,6 +24,16 @@ public class TeamRest {
         }
     }
 
+    @PostMapping(path = "/invite", consumes = "application/x-www-form-urlencoded")
+    public ResponseEntity teamInviteUser(@RequestParam("teamId") long teamId, @RequestParam("username") String username) {
+        if(service.teamInviteUser(teamId, username)) {
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping
     public Team getTeamOfUser(@RequestParam("userId") long id) {
         return service.getTeamOfUser(id);

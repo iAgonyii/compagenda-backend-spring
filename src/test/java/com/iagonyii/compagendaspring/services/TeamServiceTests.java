@@ -23,8 +23,8 @@ public class TeamServiceTests {
     @Test
     @Order(1)
     public void a_CreateTeam() {
-        Team created = service.createTeam("TSM", 4);
-        assertEquals("TSM", created.getName());
+        boolean created = service.createTeam("TSM", 4);
+        assertTrue(created);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class TeamServiceTests {
         boolean exists;
 
         try {
-            Team created = service.createTeam("TSM", 5);
+            boolean created = service.createTeam("TSM", 5);
             exists = false;
         }
         catch(EntityExistsException e) {
