@@ -28,8 +28,8 @@ public class TeamRest {
     }
 
     @PostMapping(path = "/invite", consumes = "application/x-www-form-urlencoded")
-    public ResponseEntity teamInviteUser(@RequestParam("teamId") long teamId, @RequestParam("username") String username) {
-        if(service.teamInviteUser(teamId, username)) {
+    public ResponseEntity teamInviteUser(@RequestParam("teamName") String teamName, @RequestParam("username") String username) {
+        if(service.teamInviteUser(teamName, username)) {
             return new ResponseEntity(HttpStatus.OK);
         }
         else {

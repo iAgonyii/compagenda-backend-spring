@@ -43,10 +43,10 @@ public class TeamService {
         }
     }
 
-    public boolean teamInviteUser(long teamId, String username) {
+    public boolean teamInviteUser(String teamName, String username) {
         if(userService.findByName(username) != null) {
             long userId = userService.getIdForName(username);
-            Invite invite = new Invite(teamId, userId);
+            Invite invite = new Invite(teamName, userId);
             invite.setStatus(InviteStatusEnum.Pending);
             inviteRepository.save(invite);
             return true;

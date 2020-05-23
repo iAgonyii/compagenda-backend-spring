@@ -9,17 +9,27 @@ public class Invite {
     @Id
     @GeneratedValue
     private long id;
-    private long teamId;
+    private String teamName;
     private long userId;
     private InviteStatusEnum status;
 
-    public Invite(long teamId, long userId) {
-        this.teamId = teamId;
+
+    public Invite(String teamName, long userId) {
+        this.teamName = teamName;
         this.userId = userId;
     }
 
     public Invite() {
 
+    }
+
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 
     public long getId() {
@@ -30,13 +40,6 @@ public class Invite {
         this.id = id;
     }
 
-    public long getTeamId() {
-        return teamId;
-    }
-
-    public void setTeamId(long teamId) {
-        this.teamId = teamId;
-    }
 
     public long getUserId() {
         return userId;
