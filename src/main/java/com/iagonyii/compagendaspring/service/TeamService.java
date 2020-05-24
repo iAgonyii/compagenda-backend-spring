@@ -69,6 +69,15 @@ public class TeamService {
         repository.save(team);
     }
 
+    public void kickUserFromTeam(long userId, long teamId) {
+        Team team = repository.findById(teamId).get();
+        User user = userService.getUser(userId);
+        List<User> members = team.getTeamMembers();
+        members.remove(user);
+        team.setTeamMembers(members);
+        repository.save(team);
+    }
+
     public List<Invite> getTeamInvites(long userId) {
         return inviteRepository.findAllByUserId(userId);
     }

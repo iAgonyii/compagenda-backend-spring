@@ -47,6 +47,11 @@ public class TeamRest {
         service.joinTeam(teamName, userId);
     }
 
+    @PostMapping(path = "/kick", consumes = "application/x-www-form-urlencoded")
+    public void kickUserFromTeam(@RequestParam("userId") long userId, @RequestParam("teamId") long teamId) {
+        service.kickUserFromTeam(userId, teamId);
+    }
+
     @GetMapping("/invite")
     public List<Invite> getTeamInvites(@RequestParam("userId") long id) { return service.getTeamInvites(id); }
 
