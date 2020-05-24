@@ -56,6 +56,19 @@ public class TeamService {
         }
     }
 
+    public void updateInvite(Invite invite) {
+        inviteRepository.save(invite);
+    }
+
+    public void joinTeam(String teamName, long userId) {
+        Team team = repository.findByName(teamName);
+        User user = userService.getUser(userId);
+        List<User> members = team.getTeamMembers();
+        members.add(user);
+        team.setTeamMembers(members);
+        repository.save(team);
+    }
+
     public List<Invite> getTeamInvites(long userId) {
         return inviteRepository.findAllByUserId(userId);
     }

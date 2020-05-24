@@ -37,6 +37,16 @@ public class TeamRest {
         }
     }
 
+    @PostMapping("/invite/update")
+    public void updateInvite(@RequestBody Invite invite) {
+        service.updateInvite(invite);
+    }
+
+    @PostMapping(path = "/join", consumes = "application/x-www-form-urlencoded")
+    public void joinTeam(@RequestParam("teamName") String teamName, @RequestParam("userId") long userId) {
+        service.joinTeam(teamName, userId);
+    }
+
     @GetMapping("/invite")
     public List<Invite> getTeamInvites(@RequestParam("userId") long id) { return service.getTeamInvites(id); }
 
