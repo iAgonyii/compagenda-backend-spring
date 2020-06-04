@@ -2,12 +2,10 @@ package com.iagonyii.compagendaspring.domain;
 
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Entity
 @Table(name = "activity")
@@ -22,6 +20,8 @@ public class Activity {
     private Long userId;
     @Nullable
     private Long teamId;
+    @OneToMany(targetEntity = Note.class, cascade = CascadeType.ALL)
+    private List<Note> notes;
 
     public Activity(String category, LocalDateTime starttime, LocalDateTime endtime, Long userId) {
         this.category = category;
@@ -95,5 +95,13 @@ public class Activity {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
     }
 }
